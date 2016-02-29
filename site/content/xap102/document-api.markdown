@@ -129,7 +129,7 @@ public void registerProductType(GigaSpace gigaspace) {
 {{% /tab %}}
 {{% /tabs %}}
 
-Note that this code does not reflect the complete model - most of the properties does not need to be introduced to the schema. Only properties with special roles (ID, Routing) are part of the schema definition. These meta model **settings cannot be changed** without restarting the space or dropping the type, clearing all its instances and reintroducing it again.
+Note that this code does not reflect the complete model - most of the properties do not need to be introduced to the schema. Only properties with special roles (ID, Routing) are part of the schema definition. These meta model **settings cannot be changed** without restarting the space or dropping the type, clearing all its instances and reintroducing it again.
 
 # Creating and Writing Documents
 
