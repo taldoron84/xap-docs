@@ -20,14 +20,14 @@ When configured for Flash/SSD, the MemoryXtend architecture tiers the storage of
  
 ## Space Partition Instance
 The space partition instance is a JVM heap which acts as a LRU cache against the underlying blob store. This tier in the architecture stores indexes, space class metadata, transactions, replciation redo log, leases and statistics. 
-Upon a space read operation, if the object exists in the JVM heap (i.e. a cache <i>hit</i>) it will be immediately returned to the space proxy client. Otherwise, the space will load it from the underlying blob store and place it on the JVM heap (known as a cache <i>miss</i>). 
+Upon a space read operation, if the object exists in the JVM heap (i.e. a cache <i>hit</i>) it will be immediately returned to the space proxy client. Otherwise, the space will load it from the underlying blob store and place it on the JVM heap (i.e. a cache <i>miss</i>). 
 
 
 ## Blob Store
 The blob store is based on a log-structured merge tree architecture (similar to popular NoSQL databases such as: {{%exurl "HBase""https://hbase.apache.org/"%}}, {{%exurl "BigTable""https://cloud.google.com/bigtable/"%}}, or {{%exurl "Cassandra""https://cassandra.apache.org/"%}}). There are three main components in the blob store: 
 
 - <b>MemTable</b>: An in-memory data structure (residing on off-heap RAM) where all incoming writes are stored. When a MemTable fills up, itis flushed to a SST file on storage. 
-- <b>Log</b>: A write ahead log (WAL) which serializes MemTable operations to persistent medium as log files. In the event of failure, WAL files can be used to recover the key/value store to its consistent state, by reconstructing the MemTable from teh logs. 
+- <b>Log</b>: A write ahead log (WAL) which serializes MemTable operations to persistent medium as log files. In the event of failure, WAL files can be used to recover the key/value store to its consistent state, by reconstructing the MemTable from the logs. 
 - <b>Sorted String Table (SST) files</b>: SSTable is a data structure (residing on disk) to efficiently store a large data footprint while optimizing for high throughput, sequential read/write workloads. When a MemTable fills up, it is flushed to a SST file on storage and the corresponding write ahead log file can be deleted. 
 
 
