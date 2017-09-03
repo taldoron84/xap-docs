@@ -103,4 +103,4 @@ Whenever a service grid component is started, it prints a system report in its l
 * [Lucene](https://lucene.apache.org/) integration has been upgraded to `6.4.2` (affects geospatial and full text search)
 * [Spatial4J](https://github.com/locationtech/spatial4j) integration has been upgraded to `0.6` (affects geospatial)
 
-In addition, the jvm bundled with XAP.NET hase been upgraded to Java 8 update 121.
+In addition, the jvm bundled with XAP.NET has been upgraded to Java 8 update 121.
